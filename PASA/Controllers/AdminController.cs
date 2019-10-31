@@ -25,15 +25,16 @@ namespace PASA.Controllers
 
         public ActionResult Home()
         {
-            if (Session["User"] == null)
-            {
-                return RedirectToAction("Login","Home");
-            }
+            
             //List<Registration> reg = new List<Registration>();
             List<Student> studentList = new List<Student>();
 
             try
             {
+            if (Session["User"] == null)
+            {
+                return RedirectToAction("Login","Home");
+            }
                 //reg = _registrationService.SelectRegistrationList();
                 studentList = _registrationService.SelectStudentList();
             }
