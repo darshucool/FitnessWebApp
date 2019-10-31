@@ -1,0 +1,137 @@
+﻿@using PASA.Domain
+@using PASA.Helpers
+
+@model Student
+@{
+    ViewBag.Title = "Register Student";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" media="screen"
+      href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+
+<style>
+    input[type=radio] {
+        display: inline !important;
+    }
+
+    #preloader {
+        display: none;
+    }
+</style>
+
+<section class="parallax_window_in" data-parallax="scroll" data-image-src="@Url.Content("~/Asset/img/sub_header_register.jpg")" data-natural-width="1400" data-natural-height="470">
+    <div id="sub_content_in">
+        <h1>Register</h1>
+    </div>
+</section>
+
+<div class="container margin_60_35">
+    <div class="row">
+        <div class="col-md-12">
+            <a class="btn btn-lg btn-primary pull-right" target="_blank" href="/Asset/Application_or_Affiliated_to_the_Physical_Activities.docx">
+                <small>Download the Registration Form</small>
+            </a>
+
+            <h3>Register</h3>
+            <hr />
+            <div>
+                @Html.Message()
+                @using (Html.BeginForm("RegisterStudent", "Home", FormMethod.Post, new { @id = "contactform" }))
+                {
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Activity Group</label><br />
+                                <input type="radio" name="ActivityGroup" value="Baby with the parent">&nbsp;Baby with the parent<br />
+                                <input type="radio" name="ActivityGroup" value="Nursery kids">&nbsp;Nursery kidsr<br />
+                                <input type="radio" name="ActivityGroup" value="Primary kids">&nbsp;Primary kids<br />
+                                <input type="radio" name="ActivityGroup" value="Secondary child">&nbsp;Secondary child<br />
+                                <input type="radio" name="ActivityGroup" value="Teenagers ">&nbsp;Teenagers<br />
+                                <input type="radio" name="ActivityGroup" value="Adolescence ">&nbsp;Adolescence<br />
+                                <input type="radio" name="ActivityGroup" value="Adults">&nbsp;Adults<br />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Full name</label>
+                                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control styled", @placeholder = "Full name" })
+                                @Html.ValidationMessageFor(m => m.FullName, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <div id="datetimepicker" class="input-append date">
+                                    <span class="add-on" style="float:left;margin-right:20px">
+                                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                                    </span>
+                                    @Html.TextBoxFor(m => m.DOB, new { @class = "form-control styled", @placeholder = "Date of birth", @style = "width:80%" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.DOB, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control styled", @placeholder = "Email address" })
+                                @Html.ValidationMessageFor(m => m.Email, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <h4>Address</h4>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Private</label>
+                                @Html.TextBoxFor(m => m.AddressPrivate, new { @class = "form-control styled", @placeholder = "Private address" })
+                                @Html.ValidationMessageFor(m => m.AddressPrivate, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Scholl</label>
+                                @Html.TextBoxFor(m => m.AddressSchool, new { @class = "form-control styled", @placeholder = "Scholl address" })
+                                @Html.ValidationMessageFor(m => m.AddressSchool, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <h4>Telephone No</h4>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Residence</label>
+                                @Html.TextBoxFor(m => m.TeleRes, new { @class = "form-control styled", @placeholder = "Residence No" })
+                                @Html.ValidationMessageFor(m => m.TeleRes, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Mobile</label>
+                                @Html.TextBoxFor(m => m.TeleMob, new { @class = "form-control styled", @placeholder = "Mobile No" })
+                                @Html.ValidationMessageFor(m => m.TeleMob, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" value="Register">
+                                </div>
+                            </div>
+                        </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var element = document.getElementById("preloader");
+    element.classList.add("mystyle");
+</script>

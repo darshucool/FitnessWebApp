@@ -1,0 +1,89 @@
+﻿@using PASA.Domain
+@model List<Student>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Home";
+    int i = 0;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Student Registration List</h4>
+            </div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Activity Group</th>
+                            <th>DOB</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Student oStudent in Model)
+                        {
+                            i++;
+                            <tr>
+                                <td>@i</td>
+                                <td>@oStudent.FullName</td>
+                                <td>@oStudent.ActivityGroup</td>
+                                <td>@oStudent.DOB.ToShortDateString()</td>
+                                <td><a href="@Url.Content("~/Admin/ViewMore/")@oStudent.Id">View More</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@using PASA.Domain
+@model List<Registration>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Home";
+    int i = 0;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Registration List</h4>
+            </div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>NIC</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Registration reg in Model)
+                        {
+                            i++;
+                            <tr>
+                                <td>@i</td>
+                                <td>@reg.FName</td>
+                                <td>@reg.LName</td>
+                                <td>@reg.Email</td>
+                                <td>@reg.NICNo</td>
+                                <td><a href="@Url.Content("~/Admin/ViewMore/")@reg.UId">View More</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>*@

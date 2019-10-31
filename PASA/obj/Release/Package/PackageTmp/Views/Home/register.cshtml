@@ -1,0 +1,284 @@
+﻿@using PASA.Domain
+@using PASA.Helpers
+
+@model Registration
+@{
+    ViewBag.Title = "Register Customer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link rel="stylesheet" type="text/css" media="screen"
+      href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
+<style>
+    input[type=radio] {
+        display: inline !important;
+    }
+
+    #preloader {
+        display: none;
+    }
+</style>
+
+<section class="parallax_window_in" data-parallax="scroll" data-image-src="@Url.Content("~/Asset/img/sub_header_register.jpg")" data-natural-width="1400" data-natural-height="470">
+    <div id="sub_content_in">
+        <h1>Register</h1>
+    </div>
+</section>
+
+<div class="container margin_60_35">
+    <div class="row">
+
+        <div class="col-md-12">
+            <a class="btn btn-lg btn-primary pull-right" target="_blank" href="/Asset/Application_or_Affiliated_to_the_Physical_Activities.docx">
+                <small>Download the Registration Form</small>
+            </a>
+
+            <h3>Register</h3>
+            <hr />
+            <div>
+                @Html.Message()
+                @using (Html.BeginForm("RegisterStudent", "Home", FormMethod.Post, new { @id = "contactform" }))
+                {
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>First name</label>
+                                @Html.TextBoxFor(m => m.FName, new { @class = "form-control styled", @placeholder = "First Name" })
+                                @Html.ValidationMessageFor(m => m.FName, null, new { @class = "help-inline" })
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Last name</label>
+                                @Html.TextBoxFor(m => m.LName, new { @class = "form-control styled", @placeholder = "Last Name" })
+                                @Html.ValidationMessageFor(m => m.LName, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>NIC No</label>
+                                @Html.TextBoxFor(m => m.NICNo, new { @class = "form-control styled", @placeholder = "NIC No" })
+                                @Html.ValidationMessageFor(m => m.NICNo, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label>Married Status</label><br />
+                                    <input type="radio" name="IsMarried" value="1" checked>&nbsp;Married&nbsp;&nbsp;
+                                    <input type="radio" name="IsMarried" value="2">&nbsp;Unmarried
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <div id="datetimepicker" class="input-append date">
+                                    <span class="add-on" style="float:left;margin-right:20px">
+                                        <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+                                    </span>
+                                    @Html.TextBoxFor(m => m.DOB, new { @class = "form-control styled", @placeholder = "Date of Birth", @style = "width:80%" })
+                                </div>
+                                @Html.ValidationMessageFor(m => m.DOB, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Age</label>
+                                @Html.TextBoxFor(m => m.Age, new { @class = "form-control styled", @placeholder = "Enter Private Address", @type = "number" })
+                                @Html.ValidationMessageFor(m => m.Age, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <h4>Address</h4>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Official</label>
+                                @Html.TextBoxFor(m => m.LName, new { @class = "form-control styled", @placeholder = "Enter Official Address" })
+                                @Html.ValidationMessageFor(m => m.LName, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Private</label>
+                                @Html.TextBoxFor(m => m.LName, new { @class = "form-control styled", @placeholder = "Enter Private Address" })
+                                @Html.ValidationMessageFor(m => m.LName, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>District Name</label>
+                                @Html.TextBoxFor(m => m.DistrictName, new { @class = "form-control styled", @placeholder = "Enter District" })
+                                @Html.ValidationMessageFor(m => m.DistrictName, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control styled", @placeholder = "Email Address" })
+                                @Html.ValidationMessageFor(m => m.Email, null, new { @class = "help-inline" })
+                            </div>
+                        </div>
+
+                    </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <h4>Telephone No</h4>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Residence</label>
+                                    @Html.TextBoxFor(m => m.TeleRes, new { @class = "form-control styled", @placeholder = "Residence No" })
+                                    @Html.ValidationMessageFor(m => m.TeleRes, null, new { @class = "help-inline" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Mobile</label>
+                                    @Html.TextBoxFor(m => m.TeleMob, new { @class = "form-control styled", @placeholder = "Mobiel No" })
+                                    @Html.ValidationMessageFor(m => m.TeleMob, null, new { @class = "help-inline" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+
+                                <div class="form-group">
+                                    <label>Professional Status</label><br />
+                                    <input type="checkbox" name="ProfessionalStatus" value="Physical Education Teacher">&nbsp;Physical Education Teacher<br />
+                                    <input type="checkbox" name="ProfessionalStatus" value="Primary Education Teacher">&nbsp;Primary Education Teacher<br />
+                                    <input type="checkbox" name="ProfessionalStatus" value="Sports Officer">&nbsp;Sports Officer<br />
+                                    <input type="checkbox" name="ProfessionalStatus" value="Private Coach">&nbsp;Private Coach<br />
+                                    <input type="checkbox" name="ProfessionalStatus" value="Other">&nbsp;Other<br />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>If you are other category please explain your occupation</label>
+                                    <textarea rows="2" id="message_contact" name="OtherCatDesc" class="form-control styled" style="height: 40px;" placeholder=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label>If you are private coach or other category please write your educational qualifications</label>
+                                    <br /><input type="checkbox" name="EduQualification" value="G.C.E. O/L">&nbsp;G.C.E. O/L
+                                    <br /><input type="checkbox" name="EduQualification" value="G.C.E. A/L">&nbsp;G.C.E. A/L
+                                    <br /><input type="checkbox" name="EduQualification" value="other">&nbsp;Other
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label>What are the sports you involve</label>
+                                    <br /><input type="checkbox" name="Sports" value="Gymnastics">&nbsp;Gymnastics
+                                    <br /><input type="checkbox" name="Sports" value="Volleyball">&nbsp;Volleyball
+                                    <br /><input type="checkbox" name="Sports" value="Football">&nbsp;Football
+                                    <br /><input type="checkbox" name="Sports" value="Primary P.A. Program">&nbsp;Primary P.A. Program
+                                    <br /><input type="checkbox" name="Sports" value="Athletics">&nbsp;Athletics
+                                    <br /><input type="checkbox" name="Sports" value="Netball ">&nbsp;Netball
+                                    <br /><input type="checkbox" name="Sports" value="Rugby">&nbsp;Rugby
+                                    <br /><input type="checkbox" name="Sports" value="Physical Fitness">&nbsp;Physical Fitness
+                                    <br /><input type="checkbox" name="Sports" value="Other">&nbsp;Other
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label>If you are other category please explain your sport</label>
+                                    <textarea rows="2" id="message_contact2" name="OtherCatSports" class="form-control styled" style="height: 40px;" placeholder=""></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>What is the highest achievement in your sport</label>
+                                    @Html.TextBoxFor(m => m.SportsHighestAchie, new { @class = "form-control styled", @placeholder = "" })
+                                    @Html.ValidationMessageFor(m => m.SportsHighestAchie, null, new { @class = "help-inline" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>What is the highest achievement in your coaching</label>
+                                    @Html.TextBoxFor(m => m.CoachingHighestAchie, new { @class = "form-control styled", @placeholder = "" })
+                                    @Html.ValidationMessageFor(m => m.CoachingHighestAchie, null, new { @class = "help-inline" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>What is the highest sports training course you have followed</label>
+                                    @Html.TextBoxFor(m => m.TrainingHighestAchie, new { @class = "form-control styled", @placeholder = "" })
+                                    @Html.ValidationMessageFor(m => m.TrainingHighestAchie, null, new { @class = "help-inline" })
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Are you going to rent out the ground</label>&nbsp;
+                                    <input type="radio" name="IsRentGround" value="1" checked>&nbsp;Yes&nbsp;&nbsp;
+                                    <input type="radio" name="IsRentGround" value="2">&nbsp;No
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Are you going to rent out the building (size 40×30)</label>&nbsp;
+                                    <input type="radio" name="IsRentBuilding" value="1" checked>&nbsp;Yes&nbsp;&nbsp;
+                                    <input type="radio" name="IsRentBuilding" value="2">&nbsp;No
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>Have you ever committed, been arrested for, been charged with or convicted of any criminal offense</label>
+                                    <input type="radio" name="IsArrested" value="1">&nbsp;Yes&nbsp;&nbsp;
+                                    <input type="radio" name="IsArrested" value="2" checked>&nbsp;No
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12">
+                                <div class="form-group">
+                                    <label>How much you can spend the money for this proposal on your part</label>
+                                    <br /><input type="radio" name="MoneySpendId" value="1" checked>&nbsp;50000
+                                    <br /><input type="radio" name="MoneySpendId" value="2">&nbsp;100000
+                                    <br /><input type="radio" name="MoneySpendId" value="3">&nbsp;150000
+                                    <br /><input type="radio" name="MoneySpendId" value="4">&nbsp;More than that
+                                    <br /><input type="radio" name="MoneySpendId" value="5">&nbsp;No I cant
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" value="Register">
+                                </div>
+                            </div>
+                        </div>
+                }
+            </div>
+        </div>
+        <!-- End col lg 9 -->
+
+    </div>
+    <!-- End row -->
+</div>
+<script>
+    var element = document.getElementById("preloader");
+    element.classList.add("mystyle");
+</script>

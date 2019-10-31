@@ -1,0 +1,40 @@
+﻿@using PASA.Domain
+@model List<Slider>
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Home";
+    int i = 0;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">Slider List</h4>
+            </div>
+            <div class="content table-responsive table-full-width">
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>Image</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Slider oSlider in Model)
+                        {
+                            i++;
+                            <tr>
+                                <td>@i</td>
+                                <td><img width="200" src="@Url.Content("~/Asset/img/slides/"+@oSlider.ImgPath+"")"/></td>
+                                
+                                <td><a href="@Url.Content("~/Admin/EditSlider/")@oSlider.UId">Edit</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

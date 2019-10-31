@@ -1,0 +1,262 @@
+﻿@using PASA.Domain
+@using PASA.Helpers
+@model Slider
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "View More";
+}
+<div class="row">
+    <div class="col-md-12">
+          @Html.Message()
+                @using (Html.BeginForm("EditSlider", "Admin", new { id = Model.UId }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+                {
+        <div class="card">
+            <div class="header">
+                <h4 class="title">More Detail</h4>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Image</label>:&nbsp;&nbsp;&nbsp;
+                           <img width="300" src="@Url.Content("~/Asset/img/slides/" + @Model.ImgPath + "")"/>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Upload Image</label>:&nbsp;&nbsp;&nbsp;
+                            <input type="file" name="File" id="File" class="form-control" style="margin-bottom:8px;"  maxAllowedContentLength="1073741824" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box-footer">
+            
+                 <button type="submit" class="btn btn-primary">Update</button>
+            
+        </div>
+                }
+    </div>
+</div>
+
+@*@using PASA.Domain
+@model Registration
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "ViewMore";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="header">
+                <h4 class="title">More Detail (@Model.FName @Model.LName)</h4>
+            </div>
+            <div class="content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>First Name</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.FName
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Last Name</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.LName
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Official Address</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.AddressOfficial
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Private Address</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.AddressPrivate
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>District Name</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.DistrictName
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Date od Birth</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.DOB.ToShortDateString()
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Age</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.Age
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Married Status</label>:&nbsp;&nbsp;&nbsp;
+                            @if (Model.IsMarried)
+                            {
+                                <span>Yes</span>
+                            }
+                            else
+                            {    
+                                <span>No</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Telephone No(Residence)</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.TeleRes
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Telephone No(Mobile)</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.TeleMob
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Email</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.Email
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>NIC</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.NICNo
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Professional Status</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.ProfessionalStatus
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Professional Status</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.ProfessionalStatus
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>If you are other category please explain your occupation</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.OtherCatDesc
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>If you are private coach or other category please write your educational qualifications </label>:&nbsp;&nbsp;&nbsp;
+                            @Model.EduQualification
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>What are the sports you involve</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.Sports
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>If you are other category please explain your occupation</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.OtherCatSports
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>What is the highest achievement in your sport</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.SportsHighestAchie
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>What is the highest achievement in your coaching</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.CoachingHighestAchie
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>What is the highest sports training course you have followed</label>:&nbsp;&nbsp;&nbsp;
+                            @Model.TrainingHighestAchie
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Are you going to rent out the building? ( size 40×30)</label>:&nbsp;&nbsp;&nbsp;
+                            @if (Model.IsRentBuilding)
+                            {
+                                <span>Yes</span>
+                            }
+                            else
+                            {    
+                                <span>No</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Are you going to rent out the ground</label>:&nbsp;&nbsp;&nbsp;
+                            @if (Model.IsRentGround)
+                            {
+                                <span>Yes</span>
+                            }
+                            else
+                            {    
+                                <span>No</span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>How much you can spend the money for this proposal on your part</label>:&nbsp;&nbsp;&nbsp;
+                            @if (Model.MoneySpendId == 1)
+                            {
+                                <span>50000</span>
+                            }
+                            else if (Model.MoneySpendId == 2)
+                            {
+                                <span>100000</span>
+                            }
+                            else if (Model.MoneySpendId == 3)
+                            {
+                                <span>150000</span>
+                            }
+                            else if (Model.MoneySpendId == 4)
+                            {
+                                <span>More than that</span>
+                            }
+                            else if (Model.MoneySpendId == 5)
+                            {
+                                <span>No I cant</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>AreHave you ever committed, been arrested for, been charged with or convicted of any criminal offense</label>:&nbsp;&nbsp;&nbsp;
+                            @if (Model.IsArrested)
+                            {
+                                <span>Yes</span>
+                            }
+                            else
+                            {    
+                                <span>No</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
