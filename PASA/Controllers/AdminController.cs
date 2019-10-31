@@ -160,8 +160,11 @@ namespace PASA.Controllers
                         NewPath += fileNameNew;
                         img.Save(NewPath);
                         oSlider.ImgPath = fileNameNew;
-                        _sliderService.UpdateSlider(oSlider);
+                        bool status=_sliderService.UpdateSlider(oSlider);
+                        if(status)
                         TempData[ViewDataKeys.Message] = new SuccessMessage("Successfully Updated");
+                        else
+                         TempData[ViewDataKeys.Message] = new FailMessage("Error Occured");
                     }
                 }
             }
